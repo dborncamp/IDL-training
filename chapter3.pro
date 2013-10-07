@@ -4,7 +4,10 @@
 ;requires buie library
 ;
 
-dir='/Users/dborncamp/training/idl/'
+;dir='/Users/dborncamp/training/idl/'
+dir = '/user/lubeda/idl_training/data/'
+
+goto, skip
 
 ;3.1
 x=findgen(80)
@@ -26,11 +29,12 @@ x=findgen(100)/10
 plot,x,x,xr=[0,10],/nodata,xtitle='x',ytitl='y',title='3.2',charsize=2
 oplot,x,x,psym=4
 oplot,x,x^2-x+1,psym=5
-oplot,x,x^3-x^2+1,psym=8
+oplot,x,x^3-x^2+1,psym=8  ; Must use usersym first for psym=8
 xyouts,6,1.75,'Diamond = x',charsize=2
 xyouts,6,1.5,'Triangle = x^2-x+1',charsize=2
 xyouts,6,1.25,'Circle = x^3-x^2+1',charsize=2
 xyouts,6,1,'Intercept at 1,1',charsize=2
+; Check out psym=cgsymcat(...)
 
 
 ;3.3
@@ -38,6 +42,7 @@ file='ngc4214_336.dat'
 readcol,dir+file,mag,dummy,dummy,format='f,f,f',/silent
 setwin,1,xsize=700,ysize=700
 stats,mag,/silent,nbins=200,window=1
+; How would you directly set the histogram bin size?
 
 
 ;3.4

@@ -5,7 +5,8 @@
 ;
 ;Dave Borncamp 20131003
 
-dir='/Users/dborncamp/training/idl/'
+;dir='/Users/dborncamp/training/idl/'
+dir = '/user/lubeda/idl_training/data/'
 
 ;4.1
 file='j8hm01xaq_flt.fits'
@@ -30,6 +31,7 @@ print,'Exercise 4.2'
 print,' Created on: '+created
 print,' PI is '+strn(pi_first)+' '+strn(pi_last)
 print,' Exposure time is '+strn(exptime)
+; What are the physical units?
 
 
 ;4.3
@@ -46,10 +48,16 @@ oplot,xc,yc,psym=4,color=2000,symsize=2
 ;I could not get X to dump what was on the graphics window properly using tvrd. 
 ;I am talking with IT about it. 
 
+; How would you make a red circle instead of a red diamond?
+
+
 ;4.4
 print,'Exercise 4.4'
 print,' A flag is setting a variable to 0 or 1 in the call to the program.'
 print,' If you ommit this then most programs will assume it is =0'
+
+; Actually, it will be undefined.  Use keyord_set() to parse user-inputs of this type.
+; For this problem, they were referring to the /flux flag in the aper procedure.
 
 
 ;4.5

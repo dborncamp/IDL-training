@@ -4,7 +4,8 @@
 ;Dave Borncamp 100413
 
 
-dir='/Users/dborncamp/training/idl/'
+;dir='/Users/dborncamp/training/idl/'
+dir = '/user/lubeda/idl_training/data/'
 
 ;5.1
 file='ngc4151_hband.fits'
@@ -13,8 +14,9 @@ exten=sxpar(hdr,'EXTEND')
 cube=readfits(dir+file,hdr1,exten=exten)
 
 print,'Exercise 5.1'
-print,' This file has 2 extenstions with deimenstions:'
+print,' This file has 2 extenstions with dimensions:'
 help,cube
+; Actually, it has three dimensions.
 
 
 ;5.2
@@ -32,7 +34,7 @@ crval3 = sxpar(hdr1, "CRVAL3")
 cunit3 = sxpar(hdr1, "CUNIT3")
 pscale = sxpar(hdr1, "PIXSCALE")
 
-;dimen 1 & 2 - spacial deminsions
+;dimen 1 & 2 - spatial deminsions
 sz=size(cube,/dimen)
 xpixel=findgen(sz[0])
 ypixel=findgen(sz[1])
@@ -42,7 +44,7 @@ y=crval2+(ypixel-crpix2)*cdelt2   ;location of dec in degrees
 
 ;dimen3 - wavelength space
 pixel=findgen(sz[2])+1   ;"one for each wavelength"
-lamda=crval3+(pixel-crpix3)*cdelt3  ;in A
+lamda=crval3+(pixel-crpix3)*cdelt3  ;in A   (Lambda)
 
 print,'Exercise 5.2'
 print,' The units are given in degrees'
@@ -53,9 +55,10 @@ print,' The units are given in degrees'
 plot,lamda[100:2000],cube[30,30,70:2000],/nodata,xtitle='wavelength in A',$
    ytitle='counts',title='NGC4151 IR Spectra',xrange=minmax(lamda[100:2000])
 oplot,lamda[100:2000],cube[30,30,70:2000],color='0000ff'xl
+; What wavelength are you plotting?
 
 print,'Exercise 5.3'
-print,' The wavelength rage of this cube is '+strn(minmax(lamda))+' microns as calculated from the header'
+print,' The wavelength range of this cube is '+strn(minmax(lamda))+' microns as calculated from the header'
 
 
 end
