@@ -2,5 +2,5 @@
 ;Dave Borncamp
 
 function circle_area,radius
-   return,2*!pi*radius*radius
+   return,!pi*radius*radius
 end
